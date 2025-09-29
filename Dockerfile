@@ -10,7 +10,7 @@ RUN dotnet restore Test.csproj
 COPY . .
 
 # Chuyển vào thư mục chứa project
-WORKDIR /src/Test/Test/Test/Test
+WORKDIR /src/Test/Test
 RUN dotnet publish -c Release -o /app/publish
 
 # Stage 2: Runtime
