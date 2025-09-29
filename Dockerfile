@@ -3,14 +3,14 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy file csproj và restore
-COPY Test/Test.csproj ./Test/
-RUN dotnet restore ./Test/Test.csproj
+COPY Test/Test/Test.csproj Test/Test/
+RUN dotnet restore Test/Test/Test.csproj
 
 # Copy toàn bộ source code
 COPY . .
 
 # Publish từ thư mục project
-WORKDIR /src/Test
+WORKDIR /src/Test/Test
 RUN dotnet publish -c Release -o /app/publish
 
 # Stage 2: Runtime
