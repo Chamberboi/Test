@@ -3,8 +3,8 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy file csproj và restore
-COPY Test/Test/Test.csproj /
-RUN dotnet restore Test/Test/Test.csproj
+COPY Test/Test.csproj /
+RUN dotnet restore Test/Test.csproj
 
 # Copy toàn bộ source code
 COPY . .
