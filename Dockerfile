@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 
 # Copy file csproj và restore
-COPY Test/Test/Test/Test/Test.csproj ./ 
+COPY src/Test/Test/Test.csproj ./ 
 RUN dotnet restore Test.csproj
 
 # Copy toàn bộ source code
