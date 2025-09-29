@@ -14,12 +14,22 @@ namespace Test.Controllers
         {
             _context = context;
         }
+
+        // Model request
         public class LoginRequest
         {
             public string Username { get; set; }
             public string Password { get; set; }
         }
 
+        // ✅ Endpoint test nhanh
+        [HttpGet("ping")]
+        public IActionResult Ping()
+        {
+            return Ok("Login API is alive!");
+        }
+
+        // ✅ Endpoint login thật
         [HttpPost]
         public IActionResult Login([FromBody] LoginRequest request)
         {
@@ -32,7 +42,7 @@ namespace Test.Controllers
             if (user == null)
                 return Unauthorized(new { message = "Sai tên đăng nhập hoặc mật khẩu" });
 
-            if (user.PasswordHash != request.Password)
+            if (user.PasswordHash != request.Password) // ⚠️ thực tế nên hash password
                 return Unauthorized(new { message = "Sai tên đăng nhập hoặc mật khẩu" });
 
             return Ok(new
